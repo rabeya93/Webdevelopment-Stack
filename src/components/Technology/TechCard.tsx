@@ -20,9 +20,11 @@ const DefaultBadgeStyle = "bg-slate-100 text-slate-600";
 
 type TechCardProps = {
     tech: Technology;
+    isAdded: boolean,
+    onAdd:(tech:Technology)=> void;
 };
 
-const TechCard = ({ tech }: TechCardProps) => {
+const TechCard = ({ tech, isAdded,onAdd }: TechCardProps) => {
     const badgeStyle = BadgeStyles[tech.badge] ?? DefaultBadgeStyle;
 
     return (
@@ -73,8 +75,14 @@ const TechCard = ({ tech }: TechCardProps) => {
 
             {/* Add to Stack Button */}
             <button
-            type="button"
-            className="mt-3 w-full rounded-md bg-slate-900 py-2 text-xs font-medium text-white transition hover:bg-slate-700"
+                type="button"
+                onClick={()=> onAdd(tech)}
+                disabled={isAdded}
+                className={`mt-4 w-full rounded-md py-2 text-xs font-medium transition ${
+                    isAdded
+                        ? "cursor-not-allowed bg-slate-200 text-slate-500"
+                        : "bg-slate-900 text-white hover:bg-slate-700"
+                }`}
             >
                 Add to Stack
             </button>

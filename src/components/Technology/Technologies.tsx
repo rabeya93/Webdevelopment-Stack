@@ -1,8 +1,9 @@
 
 import type { Technology } from "./Technology";
-import { use } from "react";
+import { use, useState } from "react";
 import TechCard from "./TechCard";
 import YourStack from "./YourStack";
+import {toast} from "react-toastify"
 
 type TechnologiesProps = {
     technologiesPromise: Promise<Technology[]>;
@@ -10,6 +11,32 @@ type TechnologiesProps = {
 
 const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
     const technologies = use(technologiesPromise);
+
+    const [stack, setStack]= useState<Technology[]>([]);
+    const handleAdd = (tech: Technology) => {
+        const alreadyAdded = stack.some((item) => item.id === tech.id);
+        if (alreadyAdded) {
+            toast.warning(`${tech.name} is already in your stack!`);
+            return; 
+        }
+        
+        setStack([...stack, tech]);
+        toast.success(`${tech.name} added to your stack`);
+    };
+    
+    const handleRemove = (id: string) => {
+
+        const removed = stack.find((item) => item.id === id)
+        setStack(stack.filter((item) => item.id !== id));
+        if (removed) {
+            toast.info(`${removed.name} removed from your stack`);
+        }
+    };
+    
+    const handleRemoveAll = () => {
+        setStack([]);
+        toast.info("All technologies removed from your stack");
+    };
 
     return (
     <section id="technologies" className="bg-white py-6">
@@ -29,10 +56,18 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
             <div className="mt-8 grid items-start gap-6 lg:grid-cols-[1fr_260px]">
                 <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {technologies.map((tech) => (
-                    <TechCard key={tech.id} tech={tech} />
+                    <TechCard 
+                        key={tech.id} tech={tech}
+                        isAdded={stack.some((item)=> item.id === tech.id)}
+                        onAdd={handleAdd}
+                    />
                     ))}
                 </div>
-                <YourStack />
+                <YourStack
+                    items={stack}
+                    onRemove={handleRemove}
+                    onRemoveAll={handleRemoveAll}
+                />
             </div>
         </div>
     </section>
