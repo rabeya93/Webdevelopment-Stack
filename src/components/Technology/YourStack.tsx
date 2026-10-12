@@ -32,7 +32,8 @@ const YourStack = ({items, onRemove, onRemoveAll}: YourStackProps) => {
                         {items.map((item)=>(
                             <li key={item.id} className="flex items-center gap-3 rounded-lg border border-slate-100 px-3 py-2">
 
-                                <img src=" {item.icon}" alt={`${item.name} logo`} className="h-6 w-6 object-contain"/>
+                                <img 
+                                    src= {item.icon} alt={`${item.name} logo`} className="h-6 w-6 object-contain"/>
                                 <div className="min-w-0 flex-1">
                                     <p className="truncate text-xs font-semibold text-slate-900">
                                         {item.name}
