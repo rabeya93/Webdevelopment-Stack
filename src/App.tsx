@@ -32,9 +32,11 @@ function Loading(){
 function App() {
 
   return (
-    <>
+  
+    <div className="min-h-screen min-h-screen bg-gradient-to-b from-white via-pink-50 to-violet-50">
       <NavBar />
       <HeroSection />
+
       <Suspense fallback={<Loading />}>
         <Technologies technologiesPromise={technologiesPromise} />
       </Suspense>
@@ -42,8 +44,8 @@ function App() {
       <Footer />
 
       <ToastContainer position="top-right" autoClose={2000} />
-    </>
-  )
+    </div>
+  );
 }
 
 export default App

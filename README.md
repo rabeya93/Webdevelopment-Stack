@@ -1,35 +1,50 @@
-# React + TypeScript + Vite
+DevStack — Build Your Ideal Development Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+An interactive web application that helps developers explore different technologies and build their ideal development stack. Discover frontend, backend, database, and development tools in one place.
 
-Currently, two official plugins are available:
+Features
+1. Technologies with different description rating and their categories
+2. Identify difficulty level and key information of specific technology.
+3. Organize your preferred development stack in one place
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Technology Used
+1. React.js
+2. TypeScript
+3. TailwindCss
+4. JavaScript
+5. JSON
+6. React-Toastify (NPM Package)
+7. Vite(build tool)
 
-## React Compiler
+FAQ
+1.What is JSX, and why is it used in React?
+ans: JSX is a syntax used to write HTML code inside js and used in react to make components easier to write and understand.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+2. What is the difference between props and state?
+ans : props is data that passed fro parent to child like argument in function and State is how a data managed inside a component(can change)
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+3. What does the useState hook do, and where did you use it in this project?
+ans: useState is a hook that use to store changing data , In this project i used it on Navbar to track the active link and control the menu to open and close.
 
-## Expanding the Oxlint configuration
+4. What does the useEffect hook do, and why did you need it to load the JSON data?
+ans: After rendering a component, useEffect runs as side effect.It requires while fetching the JSON data when a components load and update the state the data arrives.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+5. What does the useEffect hook do, and why did you need it to load the JSON data?
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+The useEffect hook runs side effects after a component renders. It can be used to fetch JSON data when a component loads and update the state when the data arrives.
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+5. Why does every item in a .map() list need a unique key prop?
+ans: A unique key helps to identify each item efficiently while items change during updating.
+
+6. What is conditional rendering? Show one place you used it.
+ans: conditional rendering is showing something only when it's true. For example, the stack area can show an empty-stack message when no technologies have been selected.
+
+{stack.length === 0 ? (
+  <p>No technologies selected yet.</p>
+) : (
+  <StackItems items={stack} />
+)}
+
+7. How do you pass data from a parent component to a child component, and how does a child send something back to the parent?
+ans: By using props we can send data from parent to child and to send info back , parent pass a callback function as props and child can call that function. 
+For example, a parent can pass an onAdd function to a technology card. When the user clicks Add to Stack, the child calls onAdd(tech), allowing the parent to update the selected stack.
