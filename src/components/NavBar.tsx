@@ -36,7 +36,7 @@ export default function Navbar() {
                 </a>
 
                 {/*  links  */}
-                <ul className="hidden items-center gap-8 md:flex text-lg font-semibold">
+                <ul className="hidden items-center gap-8 lg:flex text-lg font-semibold">
                     {NavigationLink.map(({ name, href }) => (
                         <li key={name}>
                             <a
@@ -51,7 +51,7 @@ export default function Navbar() {
                 </ul>
 
                 {/* Right actions (desktop) */}
-                <div className="hidden items-center gap-5 md:flex">
+                <div className="hidden items-center gap-5 lg:flex">
                     <a
                         href="#signin"
                         className="text-sm text-slate-800 transition-colors hover:text-pink-600"
@@ -72,7 +72,7 @@ export default function Navbar() {
                     aria-label="Toggle menu"
                     aria-expanded={menuOpen}
                     onClick={() => setMenuOpen((prev) => !prev)}
-                    className="rounded-md p-2 text-slate-800 md:hidden"
+                    className="rounded-md p-2 text-slate-800 lg:hidden"
                 >
                     <svg
                         className="h-6 w-6"
@@ -92,7 +92,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
             {menuOpen && (
-                <div className="border-t border-slate-100 bg-white px-6 pb-5 md:hidden">
+                <div className="border-t border-slate-100 bg-white px-6 pb-5 lg:hidden">
                     <ul className="flex flex-col gap-4 py-4">
                         {NavigationLink.map(({ name, href }) => (
                         <li key={name}>

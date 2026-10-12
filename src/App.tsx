@@ -33,7 +33,7 @@ function App() {
 
   return (
   
-    <div className="min-h-screen min-h-screen bg-gradient-to-b from-white via-pink-50 to-violet-50">
+    <div className="min-h-screen bg-linear-to-b from-white via-pink-50 to-violet-50">
       <NavBar />
       <HeroSection />
 

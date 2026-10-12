@@ -39,7 +39,7 @@ const Technologies = ({ technologiesPromise }: TechnologiesProps) => {
     };
 
     return (
-    <section id="technologies" className="bg-white py-6">
+    <section id="technologies" className="bg-white py-4">
         <div className="mx-auto max-w-6xl px-6 text-slate-900">
 
             <h2 className="text-3xl font-bold">
