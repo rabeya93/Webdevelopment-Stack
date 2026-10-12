@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css"
 import HeroSection from './components/HeroSection'
 import { Suspense } from 'react'
 import Technologies from './components/Technology/Technologies';
+import Footer from './components/Footer';
 
 const fetchTechnologies = async () => {
     const res = await fetch('./Technologies.json');
@@ -37,6 +38,8 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Technologies technologiesPromise={technologiesPromise} />
       </Suspense>
+
+      <Footer />
 
       <ToastContainer position="top-right" autoClose={2000} />
     </>
